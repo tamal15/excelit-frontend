@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+/* ---------------------navber design start ------------------- */
+
+
+.backgroundsnavbar {
+  /* background-image: linear-gradient(to right, #182533, #427BB1); */
+  background-color: white;
+  color: black;
+}
+
+
+
+
+
+.login-form {
+  padding: 20px; /* Add padding for better spacing */
+  margin: 0 auto; /* Center the form */
+  width: 90%; /* Default width for small devices */
+  max-width: 500px; /* Limit the max width */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for aesthetics */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #fff; /* Ensure visibility */
+  position: relative; /* For precise positioning if needed */
+}
+
+
+/* Custom Scrollbar section Start*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #007cde;
+  border-radius: 6px;
+}
+/* Custom Scrollbar section End*/
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575px) {
+  .login-form {
+    width: 95%; /* Almost full-width */
+    padding: 15px; /* Reduce padding to save space */
+  }
+}
+
+/* Small devices (phones and small tablets, 576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .login-form {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+/* Medium devices (tablets, 768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .login-form {
+    width: 500px; /* Slightly narrower for tablets */
+    max-width: 600px; /* Allow larger width if needed */
+    margin-left: -200px;
+    padding: 25px; /* Increase padding for a better layout */
+  }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  .login-form {
+    width: 600px; /* Reduce width to avoid overly wide forms */
+    max-width: 700px; /* Allow larger forms on bigger screens */
+    padding: 30px; /* Add comfortable spacing */
+    margin-left: -100px;
+
+  }
+}
+
+
+
+/* @media (max-width: 779px) {
+  .smallscreen {
+      background-color: rgb(17 24 39);
+  }
+} */
+
+
+/* @media (prefers-color-scheme: dark) {
+  .backgroundsnavbar {
+      background-color: rgb(17 24 39);
+      color: white;
+  }
+} */
+
+
+
+
+
+/* ---------------------navber design end  ------------------- */
+
+.login-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+  .login-container {
+    width: 100%;
+    border-radius: 0;
+  }
+}
