@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const DataList=() =>{
+const DataList = () => {
   const [users, setUsers] = useState([]);
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,23 +27,25 @@ const DataList=() =>{
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-gray-600">
+      <div className="min-h-screen flex items-center justify-center text-gray-600 text-center px-4">
         Loading admin dashboard...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
+    <div className="min-h-screen bg-gray-100 p-4 md:p-6">
+      <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 text-blue-700">
         Admin Dashboard
       </h1>
 
       <div className="grid md:grid-cols-2 gap-6">
         {/* Users Table */}
-        <div className="bg-white shadow rounded-xl p-4">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">Users</h2>
-          <table className="min-w-full text-sm">
+        <div className="bg-white shadow rounded-xl p-4 overflow-x-auto">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-700 mb-2">
+            Users
+          </h2>
+          <table className="min-w-full text-xs md:text-sm text-left whitespace-nowrap">
             <thead>
               <tr className="bg-gray-100 text-gray-600">
                 <th className="p-2">#</th>
@@ -66,9 +68,11 @@ const DataList=() =>{
         </div>
 
         {/* Bookings Table */}
-        <div className="bg-white shadow rounded-xl p-4">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">Bookings</h2>
-          <table className="min-w-full text-sm">
+        <div className="bg-white shadow rounded-xl p-4 overflow-x-auto">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-700 mb-2">
+            Bookings
+          </h2>
+          <table className="min-w-full text-xs md:text-sm text-left whitespace-nowrap">
             <thead>
               <tr className="bg-gray-100 text-gray-600">
                 <th className="p-2">#</th>
@@ -98,5 +102,6 @@ const DataList=() =>{
       </div>
     </div>
   );
-}
+};
+
 export default DataList;

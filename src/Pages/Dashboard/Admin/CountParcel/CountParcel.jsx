@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 
 const CountParcel = () => {
-  const [data, setData] = useState([]); // summary data by date
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Detailed parcels for selected date
   const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedFilter, setSelectedFilter] = useState("total"); // 'total' | 'failed' | 'cod'
+  const [selectedFilter, setSelectedFilter] = useState("total");
   const [detailedParcels, setDetailedParcels] = useState([]);
   const [detailLoading, setDetailLoading] = useState(false);
 
-  // Fetch summary on mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,7 +24,6 @@ const CountParcel = () => {
     fetchData();
   }, []);
 
-  // Fetch detailed parcels for a date and filter
   const fetchParcelsDetails = async (date, filter) => {
     setSelectedDate(date);
     setSelectedFilter(filter);
@@ -48,21 +45,21 @@ const CountParcel = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex justify-center items-center text-gray-500">
+      <div className="min-h-screen flex justify-center items-center text-gray-500 text-center px-4">
         Loading summary...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">
+    <div className="min-h-screen bg-gray-100 p-4 md:p-6">
+      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center text-blue-700">
         Bookings Summary By Date
       </h1>
 
       {/* Summary Table */}
-      <div className="bg-white shadow rounded-xl p-6 mb-10 overflow-x-auto">
-        <table className="min-w-full text-sm text-left">
+      <div className="bg-white shadow rounded-xl p-4 md:p-6 mb-10 overflow-x-auto">
+        <table className="min-w-full text-xs md:text-sm text-left whitespace-nowrap">
           <thead>
             <tr className="bg-gray-100 text-gray-700">
               <th className="p-2">Date</th>
@@ -81,7 +78,7 @@ const CountParcel = () => {
                 <td className="p-2">{row.codParcels}</td>
                 <td className="p-2">
                   <button
-                    className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    className="px-3 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700"
                     onClick={() => fetchParcelsDetails(row._id, "total")}
                   >
                     View
@@ -95,9 +92,9 @@ const CountParcel = () => {
 
       {/* Detail Section */}
       {selectedDate && (
-        <div className="bg-white shadow rounded-xl p-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-            <h2 className="text-xl font-semibold text-gray-800 mb-3 md:mb-0">
+        <div className="bg-white shadow rounded-xl p-4 md:p-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-2">
+            <h2 className="text-base md:text-xl font-semibold text-gray-800">
               Details for {selectedDate} —{" "}
               {selectedFilter === "total"
                 ? "All Bookings"
@@ -107,7 +104,7 @@ const CountParcel = () => {
             </h2>
 
             {/* Filter Buttons */}
-            <div className="space-x-2">
+            <div className="space-x-2 text-xs md:text-sm">
               <button
                 className={`px-3 py-1 rounded ${
                   selectedFilter === "total"
@@ -142,12 +139,12 @@ const CountParcel = () => {
           </div>
 
           {detailLoading ? (
-            <p className="text-gray-500">Loading details...</p>
+            <p className="text-gray-500 text-sm">Loading details...</p>
           ) : detailedParcels.length === 0 ? (
-            <p className="text-gray-500">No parcels found.</p>
+            <p className="text-gray-500 text-sm">No parcels found.</p>
           ) : (
             <div className="overflow-x-auto">
-              <table className="min-w-full text-sm text-left">
+              <table className="min-w-full text-xs md:text-sm text-left whitespace-nowrap">
                 <thead>
                   <tr className="bg-gray-100 text-gray-700">
                     <th className="p-2">#</th>
