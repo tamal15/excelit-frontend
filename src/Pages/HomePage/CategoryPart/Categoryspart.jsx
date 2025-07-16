@@ -9,7 +9,7 @@ const Categoryspart = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`https://ird-backend-2mto.onrender.com/getcategoryparts`);
+        const response = await fetch(`https://excelit-backend.onrender.com/getcategoryparts`);
         const result = await response.json();
 
         // Calculate category counts

@@ -18,7 +18,8 @@ import {
     const [authError, setAuthError] = useState('');
     const [admin, setAdmin] = useState(false);
     const [error, setError] = useState("");
-  
+const [role, setRole] = useState('');
+
     const [toggle, setToggle] = useState(false);
   
     const auth = getAuth();
@@ -90,7 +91,7 @@ import {
     // Save user to database
     const sendUser = (email, displayName, method) => {
       const user = { email, displayName };
-      fetch('https://ird-backend-2mto.onrender.com/users', {
+      fetch('https://excelit-backend.onrender.com/users', {
         method: method,
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(user),
@@ -118,11 +119,33 @@ import {
     // Load admin role from database
     useEffect(() => {
       if (user.email) {
-        fetch(`https://ird-backend-2mto.onrender.com/userLogin/${user.email}`)
+        fetch(`https://excelit-backend.onrender.com/userLogin/${user.email}`)
           .then((res) => res.json())
           .then((data) => setAdmin(data?.admin));
       }
     }, [user.email]);
+
+    useEffect(() => {
+  if (user.email) {
+    fetch(`https://excelit-backend.onrender.com/userRole/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setRole(data?.role || 'user'))
+      .catch((err) => console.error("Role fetch error:", err));
+  }
+}, [user.email]);
+
+    // Get role by email
+const getUserRole = async (email) => {
+  try {
+    const res = await fetch(`https://excelit-backend.onrender.com/userRole/${email}`);
+    const data = await res.json();
+    return data?.role || null;
+  } catch (error) {
+    console.error("Error fetching user role:", error);
+    return null;
+  }
+};
+
   
     return {
       user,
@@ -135,6 +158,8 @@ import {
       admin,
       userLogOut,
       loginWithOwnEmailAndPass,
+      getUserRole,
+      role
     };
   };
   

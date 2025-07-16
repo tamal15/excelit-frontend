@@ -1,38 +1,67 @@
-import { FaPrayingHands } from "react-icons/fa";
-import { FaHome } from "react-icons/fa";
-import { FaLightbulb } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
-import { FaBookOpen } from "react-icons/fa6";
-const LeftSidebar = () => {
-  return (
-    <div className="flex flex-col items-center w-16 h-screen bg-gray-100 shadow-lg">
-      {/* Top Icon */}
-      <div className="flex items-center justify-center w-12 h-12 mt-4 bg-green-100 rounded-full">
-        <span className="text-green-600 text-2xl"><FaPrayingHands /></span>
-      </div>
+import { NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
-      {/* Sidebar Icons */}
-      <div className="flex flex-col items-center mt-8 space-y-6">
-        <div className="flex items-center justify-center w-12 h-12 bg-gray-200 rounded-full hover:bg-gray-300">
-          <span className="text-gray-600 text-xl"><FaHome /></span>
-        </div>
-        <div className="flex items-center justify-center w-12 h-12 bg-gray-200 rounded-full hover:bg-gray-300">
-          <span className="text-gray-600 text-xl">🔲</span>
-        </div>
-        <div className="flex items-center justify-center w-12 h-12 bg-gray-200 rounded-full hover:bg-gray-300">
-          <span className="text-gray-600 text-xl"><FaLightbulb /></span>
-        </div>
-        <div className="flex items-center justify-center w-12 h-12 bg-gray-200 rounded-full hover:bg-gray-300">
-          <span className="text-gray-600 text-xl"><MdMessage /></span>
-        </div>
-        <div className="flex items-center justify-center w-12 h-12 bg-gray-200 rounded-full hover:bg-gray-300">
-          <span className="text-gray-600 text-xl"><FaBookOpen /></span>
-        </div>
-        <div className="flex items-center justify-center w-12 h-12 bg-gray-200 rounded-full hover:bg-gray-300">
-          <span className="text-gray-600 text-xl">💬</span>
-        </div>
-      </div>
-    </div>
+const LeftSidebar = () => {
+  const { role } = useAuth(); // role could be: 'user', 'admin', 'delivery', etc.
+
+  const linkClass = ({ isActive }) =>
+    `block px-4 py-2 hover:bg-gray-200 ${
+      isActive ? "font-bold text-blue-600" : ""
+    }`;
+
+  return (
+    <nav className="p-4 space-y-2">
+      <NavLink to="/dashboard/home" className={linkClass}>
+        Home
+      </NavLink>
+
+      {/* Only for role === 'user' */}
+      {role === 'user' && (
+        <>
+          <NavLink to="/dashboard/parcelbooking" className={linkClass}>
+            PercelBooking
+          </NavLink>
+          <NavLink to="/dashboard/bookinghistory" className={linkClass}>
+            Book History
+          </NavLink>
+          <NavLink to="/dashboard/trackparcel" className={linkClass}>
+            Track Parcel
+          </NavLink>
+        </>
+      )}
+
+      {role === 'delivery' && (
+        <>
+       <NavLink to="/dashboard/deliveryview" className={linkClass}>
+        Delivery View
+      </NavLink>
+      <NavLink to="/dashboard/optomizedmap" className={linkClass}>
+        Optimized Route
+      </NavLink>
+       <NavLink to="/dashboard/updateparcel" className={linkClass}>
+        Update Parcel
+      </NavLink>
+</>
+      )}
+      {role === 'admin' && (
+        <>
+       <NavLink to="/dashboard/countparcel" className={linkClass}>
+        Parcel Metrics
+      </NavLink>
+      <NavLink to="/dashboard/assaignparcel" className={linkClass}>
+        Assign Parcel
+      </NavLink>
+       <NavLink to="/dashboard/datalist" className={linkClass}>
+        View User & book
+      </NavLink>
+       <NavLink to="/dashboard/downloaddata" className={linkClass}>
+        Export
+      </NavLink>
+</>
+      )}
+
+     
+    </nav>
   );
 };
 

@@ -1,26 +1,21 @@
-
 import { createContext } from 'react';
-import useFirebase from '../../Hooks/useFirebase';
 import PropTypes from "prop-types";
-
+import useFirebase from '../../Hooks/useFirebase';
 
 export const AuthContext = createContext();
-
-
 
 const AuthProvider = ({ children }) => {
     const AllContext = useFirebase();
 
-   
     return (
         <AuthContext.Provider value={AllContext}>
             {children}
         </AuthContext.Provider>
     );
-
 };
 
 AuthProvider.propTypes = {
-    children: PropTypes.arrayOf(PropTypes.object).isRequired, 
+    children: PropTypes.node.isRequired,
 };
+
 export default AuthProvider;

@@ -61,7 +61,7 @@ const Dashboard = () => {
                 />
               )}
               <h2 className="text-black font-bold text-lg md:text-3xl p-3">
-                Dashboard
+                {/* Dashboard */}
               </h2>
             </div>
             <div className="hidden md:flex justify-center items-center p-5 ms-24">

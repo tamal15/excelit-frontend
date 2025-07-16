@@ -45,7 +45,7 @@ const AddProject = () => {
     };
 
     try {
-      await axios.post("https://ird-backend-2mto.onrender.com/postproject", formData);  // Adjust the URL to your backend API
+      await axios.post("https://excelit-backend.onrender.com/postproject", formData);  // Adjust the URL to your backend API
       Swal.fire({
         icon: "success",
         title: "Post Success",
