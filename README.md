@@ -29,6 +29,8 @@ The system leverages a powerful stack of modern web technologies to ensure perfo
 
 🌐 Axios: Promise-based HTTP client for backend API communication.
 
+ 🗺 Google Maps API (Leaflet or similar)
+
 🛠️ Getting Started
 To set up and run the project locally:
 
