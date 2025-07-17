@@ -39,6 +39,9 @@ npm install
 npm run dev
 The app will typically open at http://localhost:5173.
 
+
+
+
 ✨ Key Features
 The system provides tailored dashboards and functionalities for distinct user roles:
 
@@ -61,6 +64,8 @@ Access detailed past bookings with live status updates (Pending, Picked Up, Deli
 🗺 Real-Time Parcel Tracking
 Interactive map interface for live parcel location and movement visualization.
 
+
+
 🚚 Delivery Agent Features
 📋 Assigned Parcel Management
 Personalized list of assigned parcels with sender/receiver and parcel details.
@@ -70,6 +75,8 @@ Real-time status changes including: Picked Up, In Transit, Delivered, Delivery F
 
 🗺 Optimized Route Navigation
 Google Maps API integration providing intelligent delivery routing based on live traffic.
+
+
 
 🛠️ Administrator Features
 📊 Interactive Key Metrics Dashboard
